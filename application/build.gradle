@@ -17,6 +17,7 @@ dependencies {
     implementation project(":input-boundary")
     implementation project(":output-boundary")
     implementation project(":service")
+    implementation project(":repository")
     implementation project(":usecase")
     implementation project(":web")
 }

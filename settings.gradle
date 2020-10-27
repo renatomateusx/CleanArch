@@ -8,5 +8,4 @@ include 'repository'
 include 'service'
 include 'usecase'
 include 'web'
-include 'application'
 
