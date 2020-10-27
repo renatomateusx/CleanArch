@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'com.renatomateusx.arch'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation project(":output-boundary")
+}
