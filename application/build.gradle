@@ -1,5 +1,6 @@
 apply plugin: 'application'
-mainClassName = "com.renatomateusx.arch.main.Boot"
+
+mainClassName = "com.renatomateusx.arch.Boot"
 dependencies {
 
     implementation project(":configuration")
