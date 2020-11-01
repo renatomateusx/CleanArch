@@ -1,4 +1,4 @@
-package com.renatomateusx.user.dto;
+package com.renatomateusx.arch.user.dto;
 
 import java.util.UUID;
 
@@ -8,4 +8,9 @@ public class UserIn {
     public UserIn(UUID id){
         this.id  = id;
     }
+
+    public UserWebDTO toWebDTO(){
+        return new UserWebDTO(this.id);
+    }
+
 }
