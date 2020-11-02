@@ -1,21 +1,15 @@
 package com.renatomateusx.arch.user.dto;
 
+import java.util.List;
 import java.util.UUID;
 
 public class UserIn {
-    public UUID getId_user() {
-        return id_user;
-    }
 
-    public void setId_user(UUID id_user) {
-        this.id_user = id_user;
-    }
-
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -27,18 +21,20 @@ public class UserIn {
         this.user_name = user_name;
     }
 
-    private UUID id_user;
-    private Long id;
+    private UUID id;
     private String user_name;
 
-    public UserIn(Long id, UUID id_user, String user_name){
+    public UserIn(UUID id, String user_name){
         this.id = id;
-        this.id_user = id_user;
         this.user_name = user_name;
     }
 
     public UserWebDTO toWebDTO(){
-        return new UserWebDTO(this.id_user);
+        return new UserWebDTO(this.id, this.user_name);
+    }
+
+    public List<UserWebDTO> toWebDTOList(List<UserIn> listIn){
+        return (List<UserWebDTO>) listIn.stream().map(userOut -> userOut.toWebDTO());
     }
 
 }

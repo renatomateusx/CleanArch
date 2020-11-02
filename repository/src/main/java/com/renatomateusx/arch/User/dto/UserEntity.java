@@ -1,55 +1,46 @@
 package com.renatomateusx.arch.User.dto;
 
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 public class UserEntity {
 
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id_u;
 
     @NotNull
-    private UUID id_user;
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
+    @Column(name = "id")
+    private UUID id;
 
     @NotNull
-    private String user_name;
+    @Column(name = "name")
+    private String name;
 
 
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public UUID getId_user() {
-        return id_user;
+    public String getName() {
+        return name;
     }
 
-    public void setId_user(UUID id_user) {
-        this.id_user = id_user;
+    public void setName(String user_name) {
+        this.name = user_name;
     }
-
-
 
     public UserOut toUserOut(){
-        return new UserOut(this.getId(), this.getUser_name(), this.getId_user());
+        return new UserOut(this.getId(), this.getName());
     }
 }

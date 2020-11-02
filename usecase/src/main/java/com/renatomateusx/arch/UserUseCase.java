@@ -1,31 +1,36 @@
 package com.renatomateusx.arch;
 
 import com.renatomateusx.arch.User.IUserOut;
-import com.renatomateusx.arch.User.dto.UserOut;
-import com.renatomateusx.arch.ports.UserInToUserOut;
-import com.renatomateusx.arch.ports.UserOutToUserIn;
+import com.renatomateusx.arch.ports.UserAdapter;
 import com.renatomateusx.arch.user.IUser;
 import com.renatomateusx.arch.user.dto.UserIn;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+import java.util.List;
+import java.util.UUID;
+
+@Service
 class UserUseCase implements IUser {
     public UserUseCase(){    }
-
-    private IUserOut userOut;
-    private UserInToUserOut userInOut;
-    private UserOutToUserIn userOutIn;
     @Autowired
-    UserUseCase(IUserOut iuser, UserInToUserOut userInOut, UserOutToUserIn userOutIn){
-        this.userOut = iuser;
-        this.userInOut = userInOut;
-        this.userOutIn = userOutIn;
-    }
+    private IUserOut userOut;
+    @Autowired
+    private UserAdapter userAdapter;
 
 
     @Override
-    public UserIn getUserById(UserIn requestUserIn) {
-        return userOutIn.toInput(userOut.findByUsername(userInOut.toOutput(requestUserIn)));
+    public UserIn getUserById(UUID id) {
+        return userAdapter.toInput(userOut.findByUUID(id));
+    }
+
+    @Override
+    public void save(UserIn user) {
+        userOut.saveUser(userAdapter.toOutput(user));
+    }
+
+    @Override
+    public List<UserIn> getAll() {
+        return userAdapter.toInputList(userOut.getAll());
     }
 }

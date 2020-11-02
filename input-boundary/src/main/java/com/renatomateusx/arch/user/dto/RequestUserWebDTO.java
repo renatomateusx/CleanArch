@@ -8,18 +8,35 @@ import java.util.UUID;
 public class RequestUserWebDTO {
 
     public UUID getId_user() {
-        return id_user;
+        return id;
     }
 
     public void setId_user(UUID id_user) {
-        this.id_user = id_user;
+        this.id = id_user;
     }
 
-    private UUID id_user;
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    private UUID id;
+    private String user_name;
     public RequestUserWebDTO(){}
 
     public UserIn toInput(){
-        return new UserIn(this.id_user);
+        return new UserIn(this.id, this.user_name);
     }
 
 }

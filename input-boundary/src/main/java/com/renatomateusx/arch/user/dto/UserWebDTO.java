@@ -13,8 +13,19 @@ public class UserWebDTO {
 
     private UUID id;
 
-    public UserWebDTO(UUID id){
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    private String user_name;
+
+    public UserWebDTO(UUID id, String user_name){
         this.id  = id;
+        this.user_name = user_name;
     }
 
 
