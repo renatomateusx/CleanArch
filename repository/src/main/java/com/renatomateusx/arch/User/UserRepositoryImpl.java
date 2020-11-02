@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class UserRepositoryImpl implements IUserOut {
@@ -36,10 +37,8 @@ public class UserRepositoryImpl implements IUserOut {
     @Override
     public List<UserOut> getAll() {
         List<UserEntity> userE = userRepo.findAll();
-        return (List<UserOut>) userE.stream().map(userOut -> toOutput(userOut));
-    }
-
-    private UserOut toOutput(UserEntity user){
-        return new UserOut(user.getId(), user.getName());
+        return userE.stream()
+                .map(user -> new UserOut(user.getId(), user.getName()))
+                .collect(Collectors.toList());
     }
 }

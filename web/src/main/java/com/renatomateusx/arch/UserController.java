@@ -20,7 +20,7 @@ class UserController {
     private IUser user;
 
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public ResponseEntity<UserWebDTO> getUser(@PathVariable UUID id){
         return ResponseEntity.ok(user.getUserById(id).toWebDTO());
     }

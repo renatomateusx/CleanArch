@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Component
@@ -19,7 +20,7 @@ public class UserAdapter{
     }
 
     public List<UserIn> toInputList(List<UserOut> listOut){
-        return (List<UserIn>) listOut.stream().map(userOut -> toInput(userOut));
+        return listOut.stream().map(userOut -> toInput(userOut)).collect(Collectors.toList());
     }
     public UserIn toInput(UserOut user){
         return new UserIn(user.getId(), user.getUser_name());
