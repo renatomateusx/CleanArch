@@ -20,7 +20,7 @@ public class UserAdapter{
     }
 
     public List<UserIn> toInputList(List<UserOut> listOut){
-        return listOut.stream().map(userOut -> toInput(userOut)).collect(Collectors.toList());
+        return listOut.stream().map(this::toInput).collect(Collectors.toList());
     }
     public UserIn toInput(UserOut user){
         return new UserIn(user.getId(), user.getUser_name());
