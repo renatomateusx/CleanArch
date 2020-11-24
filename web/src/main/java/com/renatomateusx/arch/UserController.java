@@ -7,13 +7,14 @@ import com.renatomateusx.arch.user.dto.UserWebDTO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-
+@RefreshScope
 @RestController
 @RequestMapping("/v1/user")
 @Api(value = "Users")
@@ -21,6 +22,7 @@ class UserController {
     public UserController(){}
     @Autowired
     private IUser user;
+
 
     @ApiOperation(value = "Get User by Id")
     @GetMapping("/{id}")
@@ -36,6 +38,14 @@ class UserController {
     @ApiOperation(value = "Get All Users")
     @GetMapping("/all")
     public ResponseEntity<List<UserIn>> getAll(){
+
         return ResponseEntity.ok(user.getAll());
+    }
+
+
+    @ApiOperation(value = "Get Config")
+    @GetMapping("/config")
+    public ResponseEntity<String> getConfig(){
+        return ResponseEntity.ok(user.getConfig());
     }
 }

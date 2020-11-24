@@ -9,4 +9,5 @@ public interface IUser {
     UserIn getUserById(UUID id);
     void save(UserIn user);
     List<UserIn> getAll();
+    String getConfig();
 }
