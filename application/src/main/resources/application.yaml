@@ -13,6 +13,7 @@ spring:
       repositories:
         bootstrap-mode: default
 
-user-config:
-  name: ''
-  phone: ''
+ticket:
+  url: 'https://wt-technical-test.zendesk.com/api/v2/tickets.json'
+  name: 'eamon121@gmail.com'
+  pass: '8ter8V!aiYy5JhrB'
