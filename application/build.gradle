@@ -1,16 +1,7 @@
-plugins {
-    id 'java'
-}
+apply plugin: 'application'
 
-group 'com.renatomateusx.arch'
-version '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
+mainClassName = "com.renatomateusx.arch.Boot"
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 
     implementation project(":configuration")
     implementation project(":entities")

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: clean-arch
+  profiles:
+    active: local
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:CleanArch
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+
+ticket:
+  url: 'https://wt-technical-test.zendesk.com/api/v2/tickets.json'
+  name: 'eamon121@gmail.com'
+  pass: '8ter8V!aiYy5JhrB'
