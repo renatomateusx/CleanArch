@@ -15,8 +15,8 @@ import java.util.List;
 
 @RefreshScope
 @RestController
-@RequestMapping("/v1/user")
-@Api(value = "Users")
+@RequestMapping("/v1/ticket")
+@Api(value = "Tickets")
 class TicketController {
     public TicketController(){}
     @Autowired
